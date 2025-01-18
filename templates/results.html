@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Search Results for: "{{ movie_name }}"</h2>
+
+{% if movies %}
+    <ul>
+        {% for movie in movies %}
+        <li>
+            <h3>{{ movie.title }}</h3>
+            <p>Release Date: {{ movie.release_date }}</p>
+            <p>Overview: {{ movie.overview }}</p>
+            <p>Overall Polarity Score: {{ movie.polarity|round(2) }}</p>
+            <p>Overall Subjectivity Score: {{ movie.subjectivity|round(2)}}</p>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No movies found. Try searching for another movie!</p>
+{% endif %}
+{% endblock %}
